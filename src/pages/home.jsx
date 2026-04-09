@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import CardCurso from "../components/cardCurso"
+import CardCurso from "../components/CardCurso"
 
 function Home() {
   const [cursos, setCursos] = useState([])
@@ -21,11 +21,10 @@ function Home() {
   return (
     <div>
       <h1>Cursos</h1>
-      import CardCurso from "../components/CardCurso"
 
-{cursos.slice(0, 10).map(curso => (
-  <CardCurso key={curso.id} curso={curso} />
-))}
+      {cursos.slice(0, 10).map(curso => (
+        <CardCurso key={curso.id} curso={curso} />
+      ))}
     </div>
   )
 }
