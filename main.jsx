@@ -1,12 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import { FavoritosProvider } from './context/FavoritosContext.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.scss";
+import { FavoritosProvider } from "./context/FavoritosContext.jsx";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <FavoritosProvider>
       <App />
     </FavoritosProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

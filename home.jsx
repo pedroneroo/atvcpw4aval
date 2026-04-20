@@ -1,4 +1,4 @@
-import './home.css'
+import './home.scss'
 
 const cursos = [
   { titulo: "Informática", desc: "Aprenda programação e tecnologia." },

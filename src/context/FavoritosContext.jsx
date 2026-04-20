@@ -1,20 +1,32 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export const FavoritosContext = createContext();
 
 export function FavoritosProvider({ children }) {
-  const [favoritos, setFavoritos] = useState([]);
+  const [favoritos, setFavoritos] = useLocalStorage("favoritos", []);
 
   function adicionarFavorito(curso) {
-    // evita duplicados
-    setFavoritos(prev => {
-      if (prev.find(f => f.id === curso.id)) return prev;
-      return [...prev, curso];
-    });
+    const jaExiste = favoritos.some((f) => f.id === curso.id);
+
+    if (jaExiste) return;
+
+    setFavoritos([...favoritos, curso]);
+  }
+
+  function removerFavorito(id) {
+    const novaLista = favoritos.filter((curso) => curso.id !== id);
+    setFavoritos(novaLista);
   }
 
   return (
-    <FavoritosContext.Provider value={{ favoritos, adicionarFavorito }}>
+    <FavoritosContext.Provider
+      value={{
+        favoritos,
+        adicionarFavorito,
+        removerFavorito,
+      }}
+    >
       {children}
     </FavoritosContext.Provider>
   );
